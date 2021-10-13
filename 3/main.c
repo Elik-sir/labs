@@ -3,7 +3,7 @@
 int main()
 {
     int arrayLength, temp = 0;
-    printf("Input count array length\n");
+    printf("Input array length\n");
     scanf("%d", &arrayLength);
     int arr[arrayLength];
 
