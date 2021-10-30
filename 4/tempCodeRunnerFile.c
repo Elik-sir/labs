@@ -1,1 +1,1 @@
-        printf("%c", word[i]);
+hasLetter

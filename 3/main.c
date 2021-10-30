@@ -1,5 +1,27 @@
 #include <stdio.h>
 //Написать функцию, которая переставляет элементы массива типа int так, что все положительные элементы предшествуют отрицательным.
+
+void findNegativeAndSwap(int arrayLength, int *arr)
+{
+    int temp = 0;
+    for (int i = 0; i < arrayLength; i++)
+    {
+        if (arr[i] > 0)
+        {
+            for (int j = i + 1; j < arrayLength; j++)
+            {
+                if (arr[j] < 0)
+                {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    break;
+                }
+            }
+        }
+    }
+}
+
 int main()
 {
     int arrayLength, temp = 0;
@@ -16,25 +38,7 @@ int main()
     {
         printf("%d\t", arr[i]);
     }
-
-    for (int i = 0; i < arrayLength; i++)
-    {
-
-        if (arr[i] > 0)
-        {
-            for (int j = i + 1; j < arrayLength; j++)
-            {
-                if (arr[j] < 0)
-                {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                    break;
-                }
-            }
-        }
-    }
-
+    findNegativeAndSwap(arrayLength, arr);
     printf("\nOutput array: ");
     for (int i = 0; i < arrayLength; i++)
     {
@@ -43,3 +47,6 @@ int main()
     printf("\n");
     return 0;
 }
+// вынести в функцию
+
+//сделать быструю сортировку

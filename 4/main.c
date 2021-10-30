@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <malloc.h>
 
-char hasLetter(char letter, char *letters)
+int hasLetter(char letter, char *letters)
 {
-
     int i = 0;
     while (letters[i] != '\0')
     {
@@ -35,7 +34,7 @@ char *unicLetters(char *word)
     char *newLetter;
     while (word[i] != '\0')
     {
-        if (hasLetter(word[i], letters) == 0)
+        if (word[i] != ' ' && hasLetter(word[i], letters) == 0)
         {
             newLetter = (char *)malloc(j * sizeof(char));
             relloc(letters, newLetter);
@@ -75,3 +74,6 @@ int main()
     printf("\nCount: %d", count);
     return 0;
 }
+
+// добавить разные разделител
+// Строка все маленькие гласные будут заменяться на заглавные
