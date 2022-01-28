@@ -1,0 +1,1 @@
+short compareByAlphabet(char* word1, char* word2);
