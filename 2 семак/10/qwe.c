@@ -24,7 +24,7 @@ void findNegativeAndSwap(int arrayLength, int *arr) // функция
                         фыв
                     */
                     arr[i] = arr[j]; //123123
-                    arr[j] = temp;   //3231
+                    arr[j] = temp;
                     /*qwe*/ break;
                 }
             }
