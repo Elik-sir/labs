@@ -4,5 +4,5 @@
 using namespace std;
 bool isNumber(const string &str);
 int binarySearch(int *a, int size, int val);
-void writeNums(vector<int> &nums);
+void writeNums(int *nums, int *size);
 #endif

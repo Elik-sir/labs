@@ -1,8 +1,7 @@
 #include <iostream>
 #include <malloc.h>
 #include <cstdlib>
-#include <vector>
-
+#include <string>
 using namespace std;
 
 bool isNumber(const string &str)
@@ -12,55 +11,66 @@ bool isNumber(const string &str)
 
 int binarySearch(int *a, int size, int val)
 {
-    int l = 0, r = size - 1;
 
-    while (r > l)
+    int r = size - 1;
+    int l = 0;
+
+    int mid = 0;
+
+    if (a[r] < val)
     {
-        int m = (l + r) / 2; //целочисленное деление!
+        return a[r];
+    }
+    if (a[l] > val)
+    {
+        return a[l];
+    }
+    int target;
+    while (l <= r)
+    {
+        mid = (l + r) >> 1;
 
-        if (a[m] < val)
+        if (a[mid] > val)
         {
-            l = m + 1;
+            r = mid - 1;
         }
-        else if (a[m] > val)
+        else if (a[mid] < val)
         {
-            r = m - 1;
+            target = mid;
+            l = mid + 1;
         }
         else
         {
-            return m;
+            return a[l];
         }
     }
-    if (a[l] == val)
+    if (a[target] != val)
     {
-        return l;
+        return val - a[target] < a[target + 1] - val ? a[target] : a[target + 1];
     }
-
-        return a[l];
+    return a[target];
 }
 
-void writeNums(vector<int> &nums)
+int *append(int *nums, int num, int size)
 {
+    nums = (int *)realloc(nums, size);
+    nums[size - 1] = num;
+    return nums;
+}
 
+void writeNums(int *nums, int *size)
+{
     cout << "Enter number array" << endl;
-    string input = "";
+    string input;
 
-    do
+    while (cin)
     {
-        getline(cin, input);
-
-        if (input.length() == 0)
+        getline(cin, input, '\n');
+        if (input == "")
         {
             break;
         }
-
-        if (!isNumber(input))
-        {
-            cout << "Oops, it was not a number. Please try again" << endl;
-            continue;
-        }
-
-        nums.push_back(stoi(input));
-
-    } while (cin);
+        *size = *size + 1;
+        nums = append(nums, stoi(input), *size);
+    };
 }

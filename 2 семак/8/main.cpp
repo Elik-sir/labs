@@ -8,10 +8,11 @@ using namespace std;
 
 int main()
 {
-    vector<int> nums;
-
-    writeNums(nums);
-    qsort(&nums.at(0), nums.size(), sizeof(int), [](const void *x1, const void *x2)
+    // vector<int> nums;
+    int *nums = (int *)malloc(5 * sizeof(int));
+    int size = 0;
+    writeNums(nums, &size);
+    qsort(nums, size, sizeof(int), [](const void *x1, const void *x2)
           { return (*(int *)x1 - *(int *)x2); });
 
     cout << "Input  search number: ";
@@ -19,16 +20,16 @@ int main()
     cin >> searchNumber;
     if (cin)
     {
-        for (int i = 0; i < nums.size(); i++)
+        for (int i = 0; i < size; i++)
             cout << nums[i] << " ";
 
         cout << endl
              << "Nearest number: "
-             << binarySearch(&nums.at(0), nums.size(), searchNumber);
-        nums.clear();
+             << binarySearch(nums, size, searchNumber);
+        free(nums);
         return 0;
     }
     cerr << "It was not a number";
-    nums.clear();
+    free(nums);
     exit(1);
 }

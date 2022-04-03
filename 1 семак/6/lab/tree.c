@@ -114,7 +114,7 @@ void printNext(node *node_p)
 		printNext(node_p->left);
 	}
 	printNode(node_p);
-	printf(" ");
+	printf("\n");
 	if (node_p->right != NULL)
 	{
 		printNext(node_p->right);
