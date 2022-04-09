@@ -1,1 +1,1 @@
-binarySearch
+cout

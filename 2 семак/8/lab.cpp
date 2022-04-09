@@ -2,8 +2,12 @@
 #include <malloc.h>
 #include <cstdlib>
 #include <string>
+#include "lab.h"
 using namespace std;
-
+/*
+1)сортировка списка слов в лексикографическом порядке(возрастание/убывание)
+2)поиск самого близкого слова к этому(по количеству совпадающих букв/буквосочетаний)
+*/
 bool isNumber(const string &str)
 {
     return str.find_first_not_of("0123456789", str[0] == '-' ? 1 : 0) == string::npos;
@@ -41,19 +45,19 @@ int binarySearch(int *a, int size, int val)
         }
         else
         {
-            return a[l];
+            return a[mid];
         }
     }
     if (a[target] != val)
     {
-        return val - a[target] < a[target + 1] - val ? a[target] : a[target + 1];
+        return abs(val - a[target]) < abs(val - a[target + 1]) ? a[target] : a[target + 1];
     }
     return a[target];
 }
 
 int *append(int *nums, int num, int size)
 {
-    nums = (int *)realloc(nums, size);
+    nums = (int *)realloc(nums, size * sizeof(int));
     nums[size - 1] = num;
     return nums;
 }
@@ -70,7 +74,88 @@ void writeNums(int *nums, int *size)
         {
             break;
         }
+        if (!isNumber(input))
+        {
+            cout << "It is not a number, try again" << endl;
+            continue;
+        }
         *size = *size + 1;
+
         nums = append(nums, stoi(input), *size);
     };
+}
+
+/*!!!!!!Функции к допу!!!!!!*/
+
+bool isLetter(char letter)
+{
+
+    return (letter >= 'A' && letter <= 'Z') || (letter >= 'a' && letter <= 'z');
+}
+
+string **appendStr(string **words, string *word, int size)
+{
+
+    words = (string **)realloc(words, size * sizeof(string *));
+    if (words == NULL)
+    {
+        cout << "OOPS";
+        exit(1);
+    }
+
+    words[size - 1] = word;
+
+    return words;
+}
+
+wordsList getWords(string str)
+{
+    string *str2 = new string("");
+    string **words = (string **)malloc(sizeof(string *));
+    int size = 0;
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (isLetter(str[i]))
+        {
+            *str2 += str[i];
+        }
+        else
+        {
+            if (!str2->empty())
+            {
+                size++;
+                words = appendStr(words, str2, size);
+                str2 = new string("");
+            }
+        }
+    }
+    if (!str2->empty())
+    {
+        size++;
+        words = appendStr(words, str2, size);
+        str2 = new string("");
+    }
+    return {data : words, size : size};
+}
+
+string getNearestWord(wordsList words, string word)
+{
+    int nearestWordId = 0;
+    int maxCountSuchLetters = 128;
+    int countSuchLetters = 0;
+    int startPos = 0;
+    for (int i = 0; i < words.size; i++)
+    {
+        startPos = words.data[i]->find(word);
+        if (startPos != word.npos)
+        {
+            countSuchLetters = words.data[i]->length() - (startPos + word.length());
+            if (countSuchLetters < maxCountSuchLetters)
+            {
+                maxCountSuchLetters = countSuchLetters;
+                nearestWordId = i;
+            }
+        }
+    }
+    return *words.data[nearestWordId];
 }
