@@ -5,15 +5,19 @@ int main()
 {
     try
     {
-        Position A = {x : 0, y : 0};
-        Position B = {x : 0, y : 20};
-        Position C = {x : 20, y : 0};
+        Position A = {x : 1, y : 1};
+        Position B = {x : 1, y : 10};
+        Position C = {x : 10, y : 1};
         SquareTriangle triangle(A, B, C);
+        cout << triangle.getA().x << "   " << triangle.getA().y << endl;
+        cout << triangle.getB().x << "   " << triangle.getB().y << endl;
+        cout << triangle.getC().x << "   " << triangle.getC().y << endl;
+        triangle.scale(2);
     }
     catch (invalid_argument &e)
     {
         cerr << e.what() << endl;
-        return -1;
+        exit(-1);
     }
     return 0;
 }

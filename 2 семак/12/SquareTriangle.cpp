@@ -57,26 +57,18 @@ void SquareTriangle::scale(double s)
     Position a = this->getA();
     Position b = this->getB();
     Position c = this->getC();
-    double const range = s * this->pif(a.x, a.y);
-    double fi = atan(a.y / a.x);
-    setA({x : range * cos(fi), y : range * sin(fi)});
-    fi = atan(b.y / b.x);
-    setB({x : range * cos(fi), y : range * sin(fi)});
-    fi = atan(c.y / c.x);
-    setC({x : range * cos(fi), y : range * sin(fi)});
+    setA({x : s * a.x, y : s * a.y});
+    setB({x : s * b.x, y : s * b.y});
+    setC({x : s * c.x, y : s * c.y});
 }
 void SquareTriangle::rotate()
 {
     Position a = this->getA();
     Position b = this->getB();
     Position c = this->getC();
-    double const range = this->pif(a.x, a.y);
-    double fi = atan(a.y / a.x) + 90;
-    setA({x : range * cos(fi), y : range * sin(fi)});
-    fi = atan(b.y / b.x) + 90;
-    setB({x : range * cos(fi), y : range * sin(fi)});
-    fi = atan(c.y / c.x) + 90;
-    setC({x : range * cos(fi), y : range * sin(fi)});
+    setA({x : -a.y, y : a.x});
+    setB({x : -b.y, y : b.x});
+    setC({x : -c.y, y : c.x});
 }
 void SquareTriangle::miror()
 {
