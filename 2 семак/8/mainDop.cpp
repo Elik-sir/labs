@@ -34,11 +34,11 @@ int main()
     cout << "Write word which need find" << endl;
     getline(cin, needWord, '\n');
 
-    cout << "Closest word: " << getNearestWord(words, needWord);
-    // for (int i = 0; i < words.size; i++)
-    // {
-    //     cout << *words.data[i] << endl;
-    // }
+    cout << "Closest word: " << getNearestWord(words, needWord) << endl;
+    for (int i = 0; i < words.size; i++)
+    {
+        cout << *words.data[i] << endl;
+    }
 
     for (int i = 0; i < words.size; i++)
     {

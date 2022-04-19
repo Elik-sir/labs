@@ -50,13 +50,17 @@ char const *deleteComments(string str)
 
 void readFiles(FILE *f, FILE *f2)
 {
-    char *str = (char *)malloc(250 * sizeof(char));
+    string str = "";
+    char c;
     while (!feof(f))
     {
-        if (fgets(str, 250, f))
-        {
+        c = fgetc(f);
 
+        str += c;
+        if (c == '\n' || c == '\0')
+        {
             fputs(deleteComments(string(str)), f2);
+            str = "";
         }
     }
 }

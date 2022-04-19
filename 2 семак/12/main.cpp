@@ -1,18 +1,22 @@
 #include <iostream>
 #include "SquareTriangle.h"
 using namespace std;
+
+// вывод
+// случайный конструктор по умолчанию (2 точки случайные)
+// отзеркаливание относительно оси абсциссы
+// исключение в масштабировании
+// пользователь задает точку, ты выводишь, где она относительно треугольника
 int main()
 {
     try
     {
         Position A = {x : 1, y : 1};
-        Position B = {x : 1, y : 10};
-        Position C = {x : 10, y : 1};
+        Position B = {x : 1, y : 5};
+        Position C = {x : 5, y : 1};
         SquareTriangle triangle(A, B, C);
-        cout << triangle.getA().x << "   " << triangle.getA().y << endl;
-        cout << triangle.getB().x << "   " << triangle.getB().y << endl;
-        cout << triangle.getC().x << "   " << triangle.getC().y << endl;
-        triangle.scale(2);
+        triangle.printPoints();
+        cout << triangle.detectPoint({x : 3, y : 2});
     }
     catch (invalid_argument &e)
     {

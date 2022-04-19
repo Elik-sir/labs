@@ -54,6 +54,10 @@ Position SquareTriangle::getC()
 
 void SquareTriangle::scale(double s)
 {
+    if (s < 0)
+    {
+        throw invalid_argument("Negative number cannot scale triangle");
+    }
     Position a = this->getA();
     Position b = this->getB();
     Position c = this->getC();
@@ -78,4 +82,49 @@ void SquareTriangle::miror()
     setA({x : -a.x, y : a.y});
     setB({x : -b.x, y : b.y});
     setC({x : -c.x, y : c.y});
+}
+void SquareTriangle::mirorX()
+{
+    Position a = this->getA();
+    Position b = this->getB();
+    Position c = this->getC();
+    setA({x : a.x, y : -a.y});
+    setB({x : b.x, y : -b.y});
+    setC({x : c.x, y : -c.y});
+}
+
+void SquareTriangle::printPoints()
+{
+    cout << "A: (" << this->getA().x << ", " << this->getA().y << ")" << endl;
+    cout << "B: (" << this->getB().x << ", " << this->getB().y << ")" << endl;
+    cout << "C: (" << this->getC().x << ", " << this->getC().y << ")" << endl;
+}
+
+string SquareTriangle::detectPoint(Position k)
+{
+    Position a = this->getA();
+    Position b = this->getB();
+    Position c = this->getC();
+    double a1 = (a.x - k.x) * (b.y - a.y) - (b.x - a.x) * (a.y - k.x);
+    double b1 = (b.x - k.x) * (c.y - b.y) - (c.x - b.x) * (b.y - k.y);
+    double c1 = (c.x - k.x) * (a.y - c.y) - (a.x - c.x) * (c.y - k.y);
+    cout << a1 << "   " << b1 << "    " << c1 << endl;
+    string res = "outside";
+    if ((abs(a1) < 0.001) && (((b1 <= 0) && (c1 <= 0)) || ((b1 >= 0) && (c1 >= 0))))
+    {
+        res = "on boundary";
+    }
+    if ((abs(b1) < 0.001) && (((a1 <= 0) && (c1 <= 0)) || ((a1 >= 0) && (c1 >= 0))))
+    {
+        res = "on boundary";
+    }
+    if ((abs(c1) < 0.001) && (((a1 <= 0) && (b1 <= 0)) || ((a1 >= 0) && (b1 >= 0))))
+    {
+        res = "on boundary";
+    }
+    if ((a1 >= 0) && (b1 >= 0) && (c1 >= 0) || ((a1 < 0) && (b1 < 0) && (c1 < 0)))
+    {
+        return "inside";
+    }
+    return res;
 }

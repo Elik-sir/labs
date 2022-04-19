@@ -11,14 +11,10 @@ using namespace std;
 
 class SquareTriangle
 {
-
 private:
     Position __A;
     Position __B;
     Position __C;
-    void setA(Position A);
-    void setB(Position B);
-    void setC(Position C);
     double calcDistance(Position A, Position B);
     double pif(double a, double b);
     Position changeAngle(Position a);
@@ -28,7 +24,13 @@ public:
     Position getA();
     Position getB();
     Position getC();
+    void setA(Position A);
+    void setB(Position B);
+    void setC(Position C);
+    void printPoints();
     void scale(double s);
     void rotate();
     void miror();
+    void mirorX();
+    string detectPoint(Position k);
 };

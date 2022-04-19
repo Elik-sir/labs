@@ -144,6 +144,7 @@ string getNearestWord(wordsList words, string word)
     int maxCountSuchLetters = 128;
     int countSuchLetters = 0;
     int startPos = 0;
+    int hasWord = 0;
     for (int i = 0; i < words.size; i++)
     {
         startPos = words.data[i]->find(word);
@@ -155,7 +156,12 @@ string getNearestWord(wordsList words, string word)
                 maxCountSuchLetters = countSuchLetters;
                 nearestWordId = i;
             }
+            hasWord++;
         }
     }
-    return *words.data[nearestWordId];
+    if (hasWord != 0)
+    {
+        return *words.data[nearestWordId];
+    }
+    return "";
 }

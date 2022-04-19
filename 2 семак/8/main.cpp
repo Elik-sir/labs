@@ -12,11 +12,6 @@ int main()
     int size = 0;
     writeNums(nums, &size);
 
-    for (int i = 0; i < size; i++)
-    {
-        cout << nums[i] << " ";
-    }
-
     qsort(nums, size, sizeof(int), [](const void *x1, const void *x2)
           { return (*(int *)x1 - *(int *)x2); });
 
