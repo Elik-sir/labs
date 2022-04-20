@@ -1,11 +1,10 @@
 #include <stdio.h>
 
-
-void findNegativeAndSwap(int arrayLength, int *arr) 
+void findNegativeAndSwap(int arrayLength, int *arr)
 {
-    int temp = 0; 
+    int temp = 0;
     char awe[] = "qwe//ewq";
-    for  (int i = 0; i < arrayLength; i++) 
+    for (int i = 0; i < arrayLength; i++)
     {
         if (arr[i] > 0)
         {
@@ -14,11 +13,10 @@ void findNegativeAndSwap(int arrayLength, int *arr)
                 if (arr[j] < 0)
                 {
                     temp = arr[i];
-                    
-                    
-                    arr[i] = arr[j]; 
+
+                    arr[i] = arr[j];
                     arr[j] = temp;
-                     break;
+                    break;
                 }
             }
         }
@@ -76,7 +74,7 @@ int main()
     {
         printf("%d\t", arr[i]);
     }
-    
+
     qs(arr, arrayLength);
     printf("\nOutput array: ");
     for (int i = 0; i < arrayLength; i++)
@@ -86,6 +84,3 @@ int main()
     printf("\n");
     return 0;
 }
-
-
-

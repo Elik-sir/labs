@@ -3,8 +3,7 @@
 using namespace std;
 
 // вывод
-// случайный конструктор по умолчанию (2 точки случайные)
-// отзеркаливание относительно оси абсциссы
+// отзеркаливание относительно оси абсцисс
 // исключение в масштабировании
 // пользователь задает точку, ты выводишь, где она относительно треугольника
 int main()
@@ -16,7 +15,8 @@ int main()
         Position C = {x : 5, y : 1};
         SquareTriangle triangle(A, B, C);
         triangle.printPoints();
-        cout << triangle.detectPoint({x : 3, y : 2});
+        triangle.scale(-1);
+        cout << triangle.detectPoint({x : 1, y : 4});
     }
     catch (invalid_argument &e)
     {

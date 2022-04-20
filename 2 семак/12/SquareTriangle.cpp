@@ -108,7 +108,6 @@ string SquareTriangle::detectPoint(Position k)
     double a1 = (a.x - k.x) * (b.y - a.y) - (b.x - a.x) * (a.y - k.x);
     double b1 = (b.x - k.x) * (c.y - b.y) - (c.x - b.x) * (b.y - k.y);
     double c1 = (c.x - k.x) * (a.y - c.y) - (a.x - c.x) * (c.y - k.y);
-    cout << a1 << "   " << b1 << "    " << c1 << endl;
     string res = "outside";
     if ((abs(a1) < 0.001) && (((b1 <= 0) && (c1 <= 0)) || ((b1 >= 0) && (c1 >= 0))))
     {
