@@ -6,10 +6,12 @@ void findNegativeAndSwap(int arrayLength, int *arr) // функция
     int temp = 0; /*Multiline
     comment    qwe
         */
-    char awe[] = "qwe//ewq";
+    char aweqweqwe[] = "qwe//ewq";
     for /*asd*/ (int i = 0; i < arrayLength; i++) //цикл
     {
+
         if (arr[i] > 0)
+
         {
             for (int j = i + 1; j < arrayLength; j++)
             {

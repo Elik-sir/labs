@@ -10,13 +10,13 @@ int main()
 {
     try
     {
-        Position A = {x : 1, y : 1};
-        Position B = {x : 1, y : 5};
-        Position C = {x : 5, y : 1};
+        Position A = {x : 0, y : 0};
+        Position B = {x : 0, y : 10};
+        Position C = {x : 10, y : 0};
         SquareTriangle triangle(A, B, C);
         triangle.printPoints();
-        triangle.scale(-1);
-        cout << triangle.detectPoint({x : 1, y : 4});
+        cout << "Point: (" << -1 << "; " << 0 << ")" << endl;
+        cout << triangle.detectPoint({x : -1, y : 0});
     }
     catch (invalid_argument &e)
     {

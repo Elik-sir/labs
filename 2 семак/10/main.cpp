@@ -1,6 +1,6 @@
 #include <iostream>
 #include "lab.h"
-
+#include <fstream>
 // использовать fstream
 // убирать лишние пустые строчки
 // счетчики удаленных комментариев по типам
@@ -8,18 +8,21 @@
 
 int main()
 {
-
-    FILE *f = fopen("qwe.c", "r");
-    FILE *f2 = fopen("qwe2.c", "w");
-    if (f != NULL)
+    ifstream fileIn;
+    ofstream fileOut;
+    fileIn.open("qwe.c");
+    fileOut.open("qwe2.c");
+    if (fileIn.is_open() && fileOut.is_open())
     {
-        readFiles(f, f2);
+        counter count = readFiles(fileIn, fileOut);
+        cout << "Deleted singleline comments: " << count.singleline << endl
+             << "Deleted multiline comments : " << count.multiline << endl;
     }
     else
     {
         std::cout << "Error";
     }
-    fclose(f);
-    fclose(f2);
+    fileIn.close();
+    fileOut.close();
     return 0;
 }

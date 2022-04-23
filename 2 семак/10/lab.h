@@ -1,7 +1,13 @@
-#include <iostream>
 #ifndef lab
 #define lab
+#include <iostream>
+#include <fstream>
 using namespace std;
-char const *deleteComments(string str);
-void readFiles(FILE *f, FILE *f2);
+struct counter
+{
+    int multiline;
+    int singleline;
+};
+string deleteComments(string str, int *counterSingleline, int *counterMultilineline);
+counter readFiles(ifstream &f, ofstream &f2);
 #endif
