@@ -18,7 +18,7 @@ string deleteComments(string str, int *counterSingleline, int *counterMultilinel
         {
             isOpenQuote = !isOpenQuote;
         }
-        if (!isOpenQuote && str[i] == '/')
+        if (!isOpenQuote && str[i] == '/' && multiLine == -1)
         {
             if (str[i + 1] == '/')
             {
