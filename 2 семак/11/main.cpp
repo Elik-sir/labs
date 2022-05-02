@@ -7,6 +7,7 @@
 
 int main()
 {
+    initBuf();
     char *a = (char *)palloc(5);
     char *b = (char *)palloc(6);
 
@@ -37,22 +38,25 @@ int main()
     printArr();
     defrag(points, 3);
     printArr();
+    printBuf();
     c = prealloc(c, 9);
+
+    printBuf();
+    cout << "C:" << (c) << endl;
+    cout << "E: " << e << endl;
     printArr();
-    cout << c << endl;
-    pfree(c);
+
     printArr();
-    // pfree(c);
-    // printArr();
-    // for (int i = 0; i < (9 * 16); i++)
-    // {
-    //     c[i] = '6';
-    // }
-    // points[2] = &c;
-    // points[1] = &e;
-    // defrag(points, 3);
-    // printArr();
-    // printBuf();
+    for (int i = 0; i < (9 * 16); i++)
+    {
+        c[i] = '6';
+    }
+    points[2] = &c;
+    points[1] = &e;
+    defrag(points, 3);
+    pfree(e);
+    printArr();
+    printBuf();
     // pfree(e);
     // printArr();
     free(buffer);

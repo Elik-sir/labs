@@ -14,6 +14,14 @@ void printBuf()
     cout << endl;
 }
 
+void initBuf()
+{
+    for (int i = 0; i < sizeS * 17; i++)
+    {
+        buffer[i] = ' ';
+    }
+}
+
 void printArr()
 {
     for (int i = 0; i < sizeS; i++)
@@ -137,7 +145,6 @@ void defrag(char ***p, int countPointer)
             reserved[firstBlock + j] = 0;
             j++;
         }
-        cout << firstBlock + j << endl;
         buffer[(l + countBlocks) << 4] = '\0';
 
         if (buffer[(l << 4)] == '\0')
@@ -156,7 +163,7 @@ void replace(int posTo, int posFrom)
     int i = 0;
     int d = posTo << 4;
     int d2 = (posFrom << 4);
-    if (buffer[d2] == ' ')
+    if (buffer[d2] == '\0')
     {
         d2++;
     }
@@ -205,15 +212,15 @@ char *prealloc(char *p, int n)
     int qwe = 0;
     while (c < n && i < sizeS)
     {
-        c++;
         qwe++;
 
         if (reserved[right + qwe] == 1)
         {
 
-            i = right + c - 1;
+            i = right + c;
             break;
         }
+        c++;
     }
 
     if (c == n)
@@ -254,19 +261,18 @@ char *prealloc(char *p, int n)
 
         int posTo = i - c;
         int posFrom = firstBlock;
-        cout << "AAA: " << posFrom << "bb:" << right << endl;
         while (posTo < i)
         {
             reserved[posTo] = 1;
-            replace(posTo, posFrom);
             if (posFrom < right)
             {
                 reserved[posFrom] = 0;
+                replace(posTo, posFrom);
             }
             posTo++;
             posFrom++;
         }
-        buffer[((i) << 4)] = '\0';
+        buffer[i << 4] = '\0';
 
         if (buffer[firstPoint << 4] == '\0')
         {

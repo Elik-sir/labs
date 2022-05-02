@@ -13,4 +13,5 @@ void pfree(char *p);
 void defrag(char ***p, int countPointer);
 void replace(int posTo, int posFrom);
 void printBuf();
+void initBuf();
 #endif
