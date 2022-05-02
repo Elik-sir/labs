@@ -2,9 +2,14 @@
 
 void printBuf()
 {
-    for (int i = 0; i < sizeS * 17; i++)
+
+    for (int i = 0; i < sizeS; i++)
     {
-        cout << buffer[i];
+        for (int j = i << 4; j < (i + 1) * 16; j++)
+        {
+            cout << buffer[j];
+        }
+        cout << " | ";
     }
     cout << endl;
 }
@@ -55,6 +60,7 @@ char *palloc(int n)
         buffer[(i << 4)] = '\0';
         if (buffer[firstPoint << 4] == '\0')
         {
+
             return (buffer + (firstPoint << 4) + 1);
         }
         return (buffer + (firstPoint << 4));
@@ -70,6 +76,7 @@ void pfree(char *p)
     while (a < sizeS)
     {
         reserved[a] = 0;
+
         if (buffer[((a + 1) << 4)] == '\0')
         {
             buffer[((a + 1) << 4)] = ' ';
@@ -82,6 +89,8 @@ void pfree(char *p)
 
 void defrag(char ***p, int countPointer)
 {
+    char **tmp;
+
     int firstBlock,
         lastBlock,
         left,
@@ -113,7 +122,7 @@ void defrag(char ***p, int countPointer)
 
         while (right < sizeS)
         {
-            if (buffer[((right + 1) << 4)] == '\0')
+            if (buffer[(right << 4)] == '\0')
             {
                 buffer[(right << 4)] == ' ';
                 break;
@@ -121,15 +130,17 @@ void defrag(char ***p, int countPointer)
             right++;
         }
         int countBlocks = right - firstBlock;
-        cout << "L: " << right << endl;
-        while (j < countBlocks + 1)
+        while (j < countBlocks)
         {
             reserved[l + j] = reserved[firstBlock + j];
             replace(l + j, firstBlock + j);
             reserved[firstBlock + j] = 0;
             j++;
         }
-        if (*(buffer + (l << 4)) == '\0')
+        cout << firstBlock + j << endl;
+        buffer[(l + countBlocks) << 4] = '\0';
+
+        if (buffer[(l << 4)] == '\0')
         {
             *p[i] = (buffer + (l << 4) + 1);
         }
@@ -137,7 +148,6 @@ void defrag(char ***p, int countPointer)
         {
             *p[i] = (buffer + (l << 4));
         }
-        *(buffer + ((l + countBlocks + 1) << 4)) = '\0';
     }
 }
 
@@ -149,6 +159,10 @@ void replace(int posTo, int posFrom)
     if (buffer[d2] == ' ')
     {
         d2++;
+    }
+    if (buffer[d] == '\0')
+    {
+        d++;
     }
     while (i < 16)
     {
@@ -166,10 +180,57 @@ char *prealloc(char *p, int n)
     int c = 0;
     int i = 0;
     int firstPoint = 0;
+    int firstBlock = (p - buffer) >> 4;
     if (n == 0)
     {
+        pfree(p);
         return NULL;
     }
+
+    int right = firstBlock;
+    if (buffer[(firstBlock << 4)] == '\0')
+    {
+        right++;
+    }
+    while (right < sizeS)
+    {
+        if (buffer[(right << 4)] == '\0')
+        {
+            buffer[(right << 4)] == ' ';
+            break;
+        }
+        right++;
+    }
+    c = right - firstBlock;
+    int qwe = 0;
+    while (c < n && i < sizeS)
+    {
+        c++;
+        qwe++;
+
+        if (reserved[right + qwe] == 1)
+        {
+
+            i = right + c - 1;
+            break;
+        }
+    }
+
+    if (c == n)
+    {
+
+        buffer[(right << 4) + 1] = ' ';
+        for (int j = right; j < firstBlock + c; j++)
+        {
+            reserved[j] = 1;
+        }
+        buffer[((firstBlock + c) << 4)] = '\0';
+        return p;
+    }
+
+    c = 0;
+    i = 0;
+
     while (c < n && i < sizeS)
     {
 
@@ -190,17 +251,23 @@ char *prealloc(char *p, int n)
 
     if (c == n)
     {
-        int firstBlock = (p - buffer) >> 4;
-        cout << "C: " << c << endl;
-        while (c >= 0)
+
+        int posTo = i - c;
+        int posFrom = firstBlock;
+        cout << "AAA: " << posFrom << "bb:" << right << endl;
+        while (posTo < i)
         {
-            reserved[i - c] = 1;
-            replace(i - c, firstBlock + c);
-            reserved[firstBlock + c] = 0;
-            c--;
+            reserved[posTo] = 1;
+            replace(posTo, posFrom);
+            if (posFrom < right)
+            {
+                reserved[posFrom] = 0;
+            }
+            posTo++;
+            posFrom++;
         }
-        firstPoint++;
-        buffer[(i << 4)] = '\0';
+        buffer[((i) << 4)] = '\0';
+
         if (buffer[firstPoint << 4] == '\0')
         {
             return (buffer + (firstPoint << 4) + 1);
@@ -210,3 +277,16 @@ char *prealloc(char *p, int n)
 
     return NULL;
 }
+
+// for (int i = 0; i < countPointer - 1; i++)
+// {
+//     for (int j = i + 1; j < countPointer; j++)
+//     {
+//         if (&p[i] > &p[j])
+//         {
+//             tmp = p[i];
+//             p[i] = p[j];
+//             p[j] = tmp;
+//         }
+//     }
+// }
