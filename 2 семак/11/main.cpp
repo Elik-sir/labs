@@ -7,7 +7,6 @@
 
 int main()
 {
-    initBuf();
     char *a = (char *)palloc(5);
     char *b = (char *)palloc(6);
 
@@ -22,43 +21,30 @@ int main()
     {
         c[i] = '8';
     }
-
-    c[0] = '9';
-    c[1] = '2';
-    c[2] = '3';
-    c[3] = '4';
-    c[4] = '5';
-    c[5] = '6';
-    c[6] = 'A';
-    char ***points = (char ***)malloc(3 * sizeof(char **));
-    points[0] = &b;
-    points[1] = &c;
-    points[2] = &e;
-    pfree(a);
-    printArr();
-    defrag(points, 3);
-    printArr();
-    printBuf();
-    c = prealloc(c, 9);
-
-    printBuf();
-    cout << "C:" << (c) << endl;
-    cout << "E: " << e << endl;
-    printArr();
-
-    printArr();
-    for (int i = 0; i < (9 * 16); i++)
+    for (int i = 0; i < (2 * 16) - 1; i++)
     {
-        c[i] = '6';
+        e[i] = '2';
     }
-    points[2] = &c;
-    points[1] = &e;
-    defrag(points, 3);
-    pfree(e);
+
+    pfree(b);
+    printArr();
+    int countPoints = 3;
+    char *r2 = (char *)palloc(13);
+    if (r2 == NULL)
+    {
+        char ***points = (char ***)malloc(countPoints * sizeof(char **));
+        points[0] = &a;
+        points[1] = &c;
+        points[2] = &e;
+        defrag(points, countPoints);
+        r2 = (char *)palloc(13);
+    }
+
     printArr();
     printBuf();
-    // pfree(e);
-    // printArr();
+    cout << c << endl;
+    e = prealloc(e, 3);
+    printArr();
     free(buffer);
     return 0;
 }

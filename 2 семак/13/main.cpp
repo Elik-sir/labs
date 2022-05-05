@@ -2,48 +2,48 @@
 #include "IntSet.h"
 using namespace std;
 
+// сеттеры, геттеры, конструкторы и деструкторы
+// операторы перегрузить для объектов
+// поточечное произведение для одинаковых; для разных - исключение кинуть
+// декартово произведение. создать структуру
+// принтсет возвращает кол-во выведенных элементов
+// расставить const везде, где надо
+
 int main()
 {
     try
     {
         IntSet a;
-        a = a + 2 + 22;
-
-        a = a + 8 + 4 + 5;
+        a = a + 2 + 3;
         a += 0;
-        a -= 2;
-        a.printSet();
+        IntSet r;
+        // r = r + 8 + 0;
+        // a = a - r;
         IntSet b;
         b = a;
-        b -= 4;
-        b.printSet();
-        a.printSet();
-        a -= 8;
-        b += 24;
-        a += 33;
-        b = b + 33;
-        IntSet c;
 
-        c = a * b;
-        cout << "Product: " << endl;
+        // a.printSet();
+        // a -= 8;
+        // b += 24;
+        // a += 323;
+        // b = b + 33;
+        IntSet c;
+        // a.printSet();
+        // b.printSet();
+        a += 10;
+        b += 7;
+        b = b + 2 + 3 + 5 + 6;
+
+        // c = a * b;
         a.printSet();
         b.printSet();
-        cout << "result: ";
-        c.printSet();
-        b = b - 22;
-        a = a - 4;
-        a.printSet();
-        b.printSet();
-        IntSet r;
-        r = r + 22 + 5 + 0;
-        if (a == r)
+        Position *we = decardProduct(a, b);
+        for (int i = 0; i < a.getSize() * b.getSize(); i++)
         {
-            cout << "a equal r" << endl;
+            cout << "(" << we[i].x << "; " << we[i].y << ") ";
         }
-        if (a != b)
-        {
-            cout << "a is not equal b" << endl;
-        }
+        cout << endl;
+        // c.printSet();
     }
     catch (invalid_argument &e)
     {

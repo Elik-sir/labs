@@ -18,7 +18,7 @@ void initBuf()
 {
     for (int i = 0; i < sizeS * 17; i++)
     {
-        buffer[i] = ' ';
+        buffer[i] = '_';
     }
 }
 
@@ -149,7 +149,7 @@ void defrag(char ***p, int countPointer)
 
         if (buffer[(l << 4)] == '\0')
         {
-            *p[i] = (buffer + (l << 4) + 1);
+            *p[i] = (buffer + (l << 4) + 2);
         }
         else
         {

@@ -1,1 +1,1 @@
-points
+cout

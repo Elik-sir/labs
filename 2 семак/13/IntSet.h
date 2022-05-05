@@ -3,28 +3,44 @@
 #pragma once
 
 using namespace std;
+struct Position
+{
+    int x;
+    int y;
+};
 
 class IntSet
 {
 private:
     bool hasInt(int num);
-
-public:
     int *data;
     int size;
-    IntSet(int num);
+
+public:
     IntSet();
-    void printSet();
-    IntSet operator+(int num);
+    IntSet(const IntSet &set);
+    ~IntSet();
+    int *getData() const;
+    int getSize() const;
+    void setData(int *data);
+    void setSize(int size);
+    int printSet();
+    IntSet operator+(const int num);
+    IntSet operator+=(const int num);
+    IntSet operator-(const int num);
+    IntSet operator-=(const int num);
+    IntSet operator+(const IntSet &set);
+    IntSet operator+=(const IntSet &set);
+    IntSet operator-(const IntSet &set);
+    IntSet operator-=(const IntSet &set);
     IntSet operator*(IntSet set);
-    IntSet operator+=(int num);
-    IntSet operator-(int num);
-    IntSet operator-=(int num);
-    IntSet operator=(IntSet *set);
-    bool operator==(IntSet set);
-    bool operator!=(IntSet set);
-    bool operator>(IntSet set);
-    bool operator<(IntSet set);
-    bool operator>=(IntSet set);
-    bool operator<=(IntSet set);
+    void operator=(const IntSet &set);
+    bool operator==(const IntSet &set);
+    bool operator!=(const IntSet &set);
+    bool operator>(const IntSet &set);
+    bool operator<(const IntSet &set);
+    bool operator>=(const IntSet &set);
+    bool operator<=(const IntSet &set);
 };
+
+Position *decardProduct(const IntSet &a, const IntSet &b);
