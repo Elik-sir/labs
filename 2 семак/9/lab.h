@@ -2,11 +2,7 @@
 #ifndef lab
 #define lab
 using namespace std;
-struct wordsList
-{
-    string **data;
-    int size;
-};
-bool isNumber(const string &str);
-int binarySearch(int *a, int size, int val);
+void printPolynom(int *pol, int size, string arg);
+int *getPolynom(int size);
+int *dividePolynoms(int *p1, int *p2, int n, int m);
 #endif
