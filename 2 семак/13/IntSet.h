@@ -19,7 +19,6 @@ private:
 public:
     IntSet();
     IntSet(const IntSet &set);
-    ~IntSet();
     int *getData() const;
     int getSize() const;
     void setData(int *data);
@@ -41,6 +40,8 @@ public:
     bool operator<(const IntSet &set);
     bool operator>=(const IntSet &set);
     bool operator<=(const IntSet &set);
+    ~IntSet();
 };
-
+std::ostream &operator<<(ostream &os, const IntSet &p);
+std::istream &operator>>(istream &os, IntSet &p);
 Position *decardProduct(const IntSet &a, const IntSet &b);

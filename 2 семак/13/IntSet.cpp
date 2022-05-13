@@ -180,6 +180,7 @@ bool IntSet::operator!=(const IntSet &set)
     }
     return false;
 }
+
 bool IntSet::operator>(const IntSet &set)
 {
     return this->size > set.size;
@@ -199,11 +200,13 @@ bool IntSet::operator<=(const IntSet &set)
 
 IntSet IntSet::operator+(const IntSet &set)
 {
+    IntSet tmp;
+    tmp = *this;
     for (int i = 0; i < set.size; i++)
     {
-        *this += set.data[i];
+        tmp += set.data[i];
     }
-    return *this;
+    return tmp;
 }
 IntSet IntSet::operator+=(const IntSet &set)
 {
@@ -215,11 +218,13 @@ IntSet IntSet::operator+=(const IntSet &set)
 }
 IntSet IntSet::operator-(const IntSet &set)
 {
+    IntSet tmp;
+    tmp = *this;
     for (int i = 0; i < set.size; i++)
     {
-        *this -= set.data[i];
+        tmp -= set.data[i];
     }
-    return *this;
+    return tmp;
 }
 IntSet IntSet::operator-=(const IntSet &set)
 {
@@ -235,6 +240,22 @@ IntSet::~IntSet()
     delete[] data;
 }
 
+std::ostream &operator<<(ostream &os, const IntSet &p)
+{
+    for (int i = 0; i < p.getSize(); i++)
+    {
+        os << p.getData()[i] << "  ";
+    }
+
+    return os;
+}
+std::istream &operator>>(istream &in, IntSet &p)
+{
+    int num;
+    in >> num;
+    p += num;
+    return in;
+}
 // IntSet IntSet::operator*(IntSet set)
 // {
 //     IntSet resultSet;
