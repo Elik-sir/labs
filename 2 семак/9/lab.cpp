@@ -145,3 +145,65 @@ int countOne(int *p, int size)
     }
     return c;
 }
+
+int *VectorProductMatrix(int *vector, Matrix matrix, int vectorSize)
+{
+    if (vectorSize != matrix.rows)
+    {
+        throw invalid_argument("ERROR!!!!");
+    }
+    int *result = (int *)malloc(sizeof(int) * matrix.columns);
+    for (int i = 0; i < matrix.columns; i++)
+    {
+        result[i] = 0;
+    }
+    for (int i = 0; i < matrix.columns; i++)
+    {
+
+        for (int j = 0; j < vectorSize; j++)
+        {
+            result[i] += vector[j] * matrix.data[j][i];
+        }
+    }
+
+    return result;
+}
+
+Matrix writeMatrix()
+{
+    int rows, columns;
+    cout << "Write rows: ";
+    cin >> rows;
+    cout << endl;
+    cout << "Write columns: ";
+    cin >> columns;
+    cout << endl;
+    int **data = (int **)malloc(sizeof(int *) * rows);
+    for (int i = 0; i < rows; i++)
+    {
+        data[i] = (int *)malloc(sizeof(int) * columns);
+        for (int j = 0; j < columns; j++)
+        {
+            cout << "matrix[" << i << "][" << j << "]: ";
+            cin >> data[i][j];
+            cout << endl;
+        }
+    }
+    Matrix result;
+    result.columns = columns;
+    result.rows = rows;
+    result.data = data;
+    return result;
+}
+
+void printMatrix(Matrix a)
+{
+    for (int i = 0; i < a.rows; i++)
+    {
+        for (int j = 0; j < a.columns; j++)
+        {
+            cout << a.data[i][j] << "   ";
+        }
+        cout << endl;
+    }
+}
