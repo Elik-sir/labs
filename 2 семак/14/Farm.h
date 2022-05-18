@@ -10,9 +10,10 @@ private:
 
 public:
     Farm();
-    void addAnimal(Animal *animal);
+    int addAnimal(Animal *animal);
     void paintAll();
-    // removeAnimal();
-    void showAllAnimal();
+    void removeAnimal(string number);
+    void showAllAnimals();
+    bool hasAnimal(string number);
     ~Farm();
 };

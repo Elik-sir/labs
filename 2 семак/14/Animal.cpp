@@ -28,6 +28,45 @@ int Animal::getAge() const
 {
     return this->age;
 }
+int Animal::getProductCount() const
+{
+    return this->productCount;
+}
+int Animal::getProductMax() const
+{
+    return this->productMax;
+}
+
+float Animal::getSpeedProduction() const
+{
+    return this->speedProduction;
+}
+
+void Animal::setProductCount(int count) const
+{
+    if (count < 0)
+    {
+        throw invalid_argument("number is negative");
+    }
+    this->productCount = count;
+}
+void Animal::setProductMax(int count) const
+{
+    if (count < 0)
+    {
+        throw invalid_argument("number is negative");
+    }
+    this->productMax = count;
+}
+
+void Animal::setSpeedProduction(float speed) const
+{
+    if (speed < 0)
+    {
+        throw invalid_argument("speed can not  negative");
+    }
+    this->speedProduction = speed;
+}
 
 void Animal::setNumber(string _number)
 {

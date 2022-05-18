@@ -8,8 +8,12 @@ Goose::Goose(string number, string name, int age) : Animal(number, name, age)
 
 Goose::Goose() : Animal()
 {
-
     this->paint();
+}
+
+Goose::Goose(const Goose &goose)
+    : Goose(goose.getNumber(), goose.getName(), goose.getAge())
+{
 }
 
 void Goose::paint()

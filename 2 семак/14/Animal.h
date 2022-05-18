@@ -6,6 +6,9 @@ class Animal
 private:
     string number;
     string name;
+    int productCount;
+    int productMax;
+    float speedProduction;
     int age;
 
 public:
@@ -17,6 +20,9 @@ public:
     void setNumber(string _number);
     void setName(string _name);
     void setAge(int _age);
+    int getProductCount() const;
+    int getProductMax() const;
+    float getSpeedProduction() const;
     virtual void paint() = 0;
     virtual void getInfo();
 };

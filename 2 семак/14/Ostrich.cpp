@@ -54,5 +54,6 @@ void Ostrich::getInfo()
          << "   number: " << getNumber() << "," << endl
          << "   age: " << getAge() << "," << endl
          << "   pawsColor: " << pawsColor << "," << endl
-         << "   wingsColor: " << wingsColor << endl;
+         << "   wingsColor: " << wingsColor << endl
+         << "},\n";
 }

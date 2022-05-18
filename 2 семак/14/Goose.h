@@ -11,6 +11,7 @@ private:
 
 public:
     Goose(string number, string name, int age);
+    Goose(const Goose &goose);
     Goose();
     int getPawsColor();
     int getWingsColor();
