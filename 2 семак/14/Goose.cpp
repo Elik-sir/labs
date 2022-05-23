@@ -4,11 +4,17 @@ Goose::Goose(string number, string name, int age) : Animal(number, name, age)
 {
     srand(time(0));
     this->paint();
+    this->setProductMax(10);
+    this->setSpeedProduction(2);
+    type = "goose";
 }
 
 Goose::Goose() : Animal()
 {
     this->paint();
+    this->setProductMax(10);
+    this->setSpeedProduction(2);
+    type = "goose";
 }
 
 Goose::Goose(const Goose &goose)
@@ -16,6 +22,14 @@ Goose::Goose(const Goose &goose)
 {
 }
 
+string Goose::getType()
+{
+    return Goose::type;
+}
+string Goose::getTypeAnimal()
+{
+    return Goose::type;
+}
 void Goose::paint()
 {
 
@@ -76,12 +90,12 @@ Goose &Goose::operator=(const Goose &goose)
 
 void Goose::getInfo()
 {
-    cout << "{\n   type: Goose\n"
+    cout << "  {\n   type: Goose\n"
          << "   name: " << getName() << "," << endl
          << "   number: " << getNumber() << "," << endl
          << "   age: " << getAge() << "," << endl
          << "   pawsColor: " << pawsColor << "," << endl
          << "   wingsColor: " << wingsColor << "," << endl
          << "   bodyColor: " << bodyColor << endl
-         << "},\n";
+         << "  },\n";
 }

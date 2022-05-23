@@ -1,4 +1,5 @@
-#pragma once
+#ifndef AnimalClass
+#define AnimalClass
 #include <iostream>
 using namespace std;
 class Animal
@@ -6,9 +7,10 @@ class Animal
 private:
     string number;
     string name;
+
     int productCount;
     int productMax;
-    float speedProduction;
+    int speedProduction;
     int age;
 
 public:
@@ -22,7 +24,14 @@ public:
     void setAge(int _age);
     int getProductCount() const;
     int getProductMax() const;
-    float getSpeedProduction() const;
+    int getSpeedProduction() const;
+    void collectProducts();
+    void setProductCount(int count);
+    void setProductMax(int count);
+    void setSpeedProduction(int speed);
+    void printProductionInfo();
+    virtual string getType() = 0;
     virtual void paint() = 0;
     virtual void getInfo();
 };
+#endif

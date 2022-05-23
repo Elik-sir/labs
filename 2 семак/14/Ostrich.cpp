@@ -4,10 +4,16 @@ Ostrich::Ostrich(string number, string name, int age, int pawsColor, int wingsCo
 {
     this->pawsColor = pawsColor;
     this->wingsColor = wingsColor;
+    this->setProductMax(20);
+    this->setSpeedProduction(4);
+    type = "ostrich";
 }
 
 Ostrich::Ostrich() : Animal()
 {
+    this->setProductMax(20);
+    type = "ostrich";
+    this->setSpeedProduction(4);
     // this->paint();
 }
 
@@ -15,7 +21,14 @@ void Ostrich::paint()
 {
     this->pawsColor = wingsColor;
 }
-
+string Ostrich::getType()
+{
+    return Ostrich::type;
+}
+string Ostrich::getTypeAnimal()
+{
+    return Ostrich::type;
+}
 int Ostrich::getPawsColor()
 {
     return this->pawsColor;
@@ -49,11 +62,11 @@ Ostrich &Ostrich::operator=(const Ostrich &ostrich)
 
 void Ostrich::getInfo()
 {
-    cout << "{\n   type: Ostrich\n"
+    cout << "  {\n   type: Ostrich\n"
          << "   name: " << getName() << "," << endl
          << "   number: " << getNumber() << "," << endl
          << "   age: " << getAge() << "," << endl
          << "   pawsColor: " << pawsColor << "," << endl
          << "   wingsColor: " << wingsColor << endl
-         << "},\n";
+         << "  },\n";
 }

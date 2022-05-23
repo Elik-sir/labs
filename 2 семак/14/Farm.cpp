@@ -35,7 +35,7 @@ int Farm::addAnimal(Animal *animal)
     {
         this->animals[countAnimals] = animal;
         countAnimals++;
-        return;
+        return countAnimals;
     }
     Animal **temp = new Animal *[capacity * 2];
     for (int i = 0; i < countAnimals; i++)
@@ -67,6 +67,14 @@ void Farm::paintAll()
         animals[i]->paint();
     }
 }
+Animal **Farm::getAnimals()
+{
+    return this->animals;
+}
+int Farm::getCountAnimals()
+{
+    return this->countAnimals;
+}
 
 void Farm::removeAnimal(string number)
 {
@@ -92,6 +100,111 @@ void Farm::removeAnimal(string number)
     }
 
     countAnimals--;
+}
+
+int Farm::getSumPenguinProducts()
+{
+    return this->sumPenguinProducts;
+}
+int Farm::getSumOstrichProducts()
+{
+    return this->sumOstrichProducts;
+}
+int Farm::getSumGooseProducts()
+{
+    return this->sumGooseProducts;
+}
+void Farm::setSumPenguinProducts(int count)
+{
+    this->sumPenguinProducts = count;
+}
+void Farm::setSumOstrichProducts(int count)
+{
+    this->sumOstrichProducts = count;
+}
+void Farm::setSumGooseProducts(int count)
+{
+    this->sumGooseProducts = count;
+}
+
+void Farm::collectAllProducts()
+{
+    for (int i = 0; i < this->countAnimals; i++)
+    {
+
+        if (animals[i]->getType() == Goose::getTypeAnimal())
+        {
+            this->addGooseProducts(animals[i]->getProductCount());
+        }
+        if (animals[i]->getType() == Ostrich::getTypeAnimal())
+        {
+            this->addOstrichProducts(animals[i]->getProductCount());
+        }
+        if (animals[i]->getType() == Penguin::getTypeAnimal())
+        {
+            this->addPenguinProducts(animals[i]->getProductCount());
+        }
+        animals[i]->setProductCount(0);
+    }
+}
+
+void Farm::collectGooseProducts()
+{
+    for (int i = 0; i < this->countAnimals; i++)
+    {
+        if (animals[i]->getType() == Goose::getTypeAnimal())
+        {
+            this->addGooseProducts(animals[i]->getProductCount());
+            animals[i]->setProductCount(0);
+        }
+    }
+}
+
+void Farm::collectOstrichProducts()
+{
+    for (int i = 0; i < this->countAnimals; i++)
+    {
+        if (animals[i]->getType() == Ostrich::getTypeAnimal())
+        {
+            this->addOstrichProducts(animals[i]->getProductCount());
+            animals[i]->setProductCount(0);
+        }
+    }
+}
+
+void Farm::collectPenguinProducts()
+{
+    for (int i = 0; i < this->countAnimals; i++)
+    {
+        if (animals[i]->getType() == Penguin::getTypeAnimal())
+        {
+            this->addPenguinProducts(animals[i]->getProductCount());
+            animals[i]->setProductCount(0);
+        }
+    }
+}
+
+void Farm::clearProducts()
+{
+    setSumPenguinProducts(0);
+    setSumOstrichProducts(0);
+    setSumGooseProducts(0);
+}
+void Farm::addPenguinProducts(int count)
+{
+    this->sumPenguinProducts += count;
+}
+void Farm::addOstrichProducts(int count)
+{
+    this->sumOstrichProducts += count;
+}
+void Farm::addGooseProducts(int count)
+{
+    this->sumGooseProducts += count;
+}
+void Farm::printProductionInfo()
+{
+    cout << "{\n  sumGooseProducts: " << sumGooseProducts << ",\n  sumOstrichProducts: " << sumOstrichProducts << ",\n  sumPenguinProducts: " << sumPenguinProducts << "\n},\n";
 }
 
 Farm::~Farm()

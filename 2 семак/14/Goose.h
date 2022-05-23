@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GooseClass
+#define GooseClass
 #include <iostream>
 #include "Animal.h"
 using namespace std;
@@ -10,6 +11,7 @@ private:
     int bodyColor;
 
 public:
+    inline static string type;
     Goose(string number, string name, int age);
     Goose(const Goose &goose);
     Goose();
@@ -20,6 +22,10 @@ public:
     void setWingsColor(int color);
     void setBodyColor(int color);
     void paint();
+    string getType();
+    static string getTypeAnimal();
     void getInfo();
     Goose &operator=(const Goose &goose);
 };
+
+#endif
