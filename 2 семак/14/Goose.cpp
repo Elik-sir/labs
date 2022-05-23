@@ -1,12 +1,15 @@
 #include "Goose.h"
 #include <ctime>
-Goose::Goose(string number, string name, int age) : Animal(number, name, age)
+#include <cstring>
+Goose::Goose(const char *number, const char *name, int age) : Animal(number, name, age)
 {
     srand(time(0));
     this->paint();
     this->setProductMax(10);
     this->setSpeedProduction(2);
-    type = "goose";
+    char str1[] = "goose";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
 }
 
 Goose::Goose() : Animal()
@@ -14,7 +17,9 @@ Goose::Goose() : Animal()
     this->paint();
     this->setProductMax(10);
     this->setSpeedProduction(2);
-    type = "goose";
+    char str1[] = "goose";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
 }
 
 Goose::Goose(const Goose &goose)
@@ -22,11 +27,11 @@ Goose::Goose(const Goose &goose)
 {
 }
 
-string Goose::getType()
+char *Goose::getType()
 {
     return Goose::type;
 }
-string Goose::getTypeAnimal()
+char *Goose::getTypeAnimal()
 {
     return Goose::type;
 }

@@ -14,6 +14,7 @@ void FarmLoop::run()
     int hours = 0;
     int days = 0;
     Animal **animals = farm->getAnimals();
+    farm->showAllAnimals();
     while (true)
     {
         sleep_for(nanoseconds(1000000000));

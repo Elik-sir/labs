@@ -1,12 +1,15 @@
 #include "Penguin.h"
 #include <cstdlib>
+#include <cstring>
 using namespace std;
-Penguin::Penguin(string number, string name, int age) : Animal(number, name, age)
+Penguin::Penguin(const char *number, const char *name, int age) : Animal(number, name, age)
 {
     this->paint();
     this->setProductMax(30);
     this->setSpeedProduction(5);
-    Penguin::type = "penguin";
+    char str1[] = "penguin";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
 }
 
 Penguin::Penguin() : Animal()
@@ -14,14 +17,16 @@ Penguin::Penguin() : Animal()
     this->paint();
     this->setProductMax(30);
     this->setSpeedProduction(5);
-    Penguin::type = "penguin";
+    char str1[] = "penguin";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
 }
 
 void Penguin::paint()
 {
     this->bodyColor = 0;
 }
-string Penguin::getType()
+char *Penguin::getType()
 {
     return Penguin::type;
 }

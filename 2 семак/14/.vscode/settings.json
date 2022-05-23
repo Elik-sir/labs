@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "new": "cpp",
+        "typeinfo": "cpp",
+        "memory": "cpp",
+        "istream": "cpp",
+        "functional": "cpp",
+        "cstring": "cpp"
+    }
+}

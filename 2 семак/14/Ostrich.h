@@ -8,10 +8,10 @@ class Ostrich : public Animal
 private:
     int pawsColor;
     int wingsColor;
-    inline static string type;
+    inline static char *type;
 
 public:
-    Ostrich(string number, string name, int age, int pawsColor, int wingsColor);
+    Ostrich(const char *number, const char *name, int age, int pawsColor, int wingsColor);
     Ostrich();
     int getPawsColor();
     int getWingsColor();
@@ -19,7 +19,7 @@ public:
     void setPawsColor(int color);
     void setWingsColor(int color);
     void paint();
-    string getType();
+    char *getType();
     static string getTypeAnimal();
     Ostrich &operator=(const Ostrich &ostrich);
     void getInfo();

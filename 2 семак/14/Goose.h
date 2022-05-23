@@ -11,8 +11,8 @@ private:
     int bodyColor;
 
 public:
-    inline static string type;
-    Goose(string number, string name, int age);
+    inline static char *type;
+    Goose(const char *number, const char *name, int age);
     Goose(const Goose &goose);
     Goose();
     int getPawsColor();
@@ -22,8 +22,8 @@ public:
     void setWingsColor(int color);
     void setBodyColor(int color);
     void paint();
-    string getType();
-    static string getTypeAnimal();
+    char *getType();
+    static char *getTypeAnimal();
     void getInfo();
     Goose &operator=(const Goose &goose);
 };

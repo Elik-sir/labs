@@ -6,12 +6,39 @@ Farm::Farm()
     this->countAnimals = 0;
     this->capacity = 5;
 }
-
-bool Farm::hasAnimal(string number)
+bool cmpStr(char *str1, char *str2)
 {
+    int i = 0;
+    while (str1[i] != '\0')
+    {
+        if (str1[i] != str2[i])
+        {
+            return false;
+        }
+        i++;
+    }
+    return str2[i] == '\0';
+}
+char *Farm::getStr(const char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        i++;
+    }
+    char *newStr = new char[i];
+    for (int i = 0; i < i; i++)
+    {
+        newStr[i] = str[i];
+    }
+    return newStr;
+}
+bool Farm::hasAnimal(char *number)
+{
+
     for (int i = 0; i < countAnimals; i++)
     {
-        if (animals[i]->getNumber() == number)
+        if (cmpStr(animals[i]->getNumber(), number))
         {
             return true;
         }
@@ -76,14 +103,16 @@ int Farm::getCountAnimals()
     return this->countAnimals;
 }
 
-void Farm::removeAnimal(string number)
+void Farm::removeAnimal(const char *number)
 {
     int pos = -1;
+    char *findNumber = this->getStr(number);
     for (int i = 0; i < countAnimals; i++)
     {
-        if (animals[i]->getNumber() == number)
+        if (cmpStr(animals[i]->getNumber(), findNumber))
         {
             pos = i;
+            break;
         }
     }
 

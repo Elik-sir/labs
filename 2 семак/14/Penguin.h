@@ -7,10 +7,10 @@ class Penguin : public Animal
 {
 private:
     int bodyColor;
-    inline static string type;
+    inline static char *type;
 
 public:
-    Penguin(string number, string name, int age);
+    Penguin(const char *number, const char *name, int age);
     Penguin();
     int getBodyColor();
     void setBodyColor(int color);
@@ -18,7 +18,7 @@ public:
     void paint();
     void getInfo();
 
-    string getType();
+    char *getType();
     static string getTypeAnimal();
 };
 #endif

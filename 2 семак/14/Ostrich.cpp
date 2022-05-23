@@ -1,18 +1,22 @@
 #include "Ostrich.h"
-
-Ostrich::Ostrich(string number, string name, int age, int pawsColor, int wingsColor) : Animal(number, name, age)
+#include <cstring>
+Ostrich::Ostrich(const char *number, const char *name, int age, int pawsColor, int wingsColor) : Animal(number, name, age)
 {
     this->pawsColor = pawsColor;
     this->wingsColor = wingsColor;
     this->setProductMax(20);
     this->setSpeedProduction(4);
-    type = "ostrich";
+    char str1[] = "ostrich";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
 }
 
 Ostrich::Ostrich() : Animal()
 {
     this->setProductMax(20);
-    type = "ostrich";
+    char str1[] = "ostrich";
+    type = new char[strlen(str1) + 1];
+    strcpy(type, str1);
     this->setSpeedProduction(4);
     // this->paint();
 }
@@ -21,7 +25,7 @@ void Ostrich::paint()
 {
     this->pawsColor = wingsColor;
 }
-string Ostrich::getType()
+char *Ostrich::getType()
 {
     return Ostrich::type;
 }

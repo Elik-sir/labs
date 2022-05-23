@@ -1,27 +1,61 @@
 #include "Animal.h"
+#include <cstring>
+// char *getStr(char *str)
+// {
+//     int i = 0;
+//     while (str[i] != '\0')
+//     {
+//         i++;
+//     }
+//     char *newStr = (char *)malloc(sizeof(char) * i);
+//     for (int i = 0; i < i; i++)
+//     {
+//         newStr[i] = str[i];
+//     }
+//     return newStr;
+// }
 
-Animal::Animal(string number, string name, int age)
+char *getStr(const char *str)
 {
-    this->setName(name);
-    this->setNumber(number);
+    char *newStr = (char *)malloc(sizeof(char) * (strlen(str) + 1));
+    if (newStr == NULL)
+    {
+        exit(1);
+    }
+    strcpy(newStr, str);
+    return newStr;
+}
+
+Animal::Animal(const char *number, const char *name, int age)
+{
+    this->setName(getStr(name));
+    this->setNumber(getStr(number));
     this->setAge(age);
     this->setProductCount(0);
 }
 
 Animal::Animal()
 {
-    this->setName("noname");
-    this->setNumber("empty");
+    char *noname = new char[7];
+    noname[0] = 'n';
+    noname[1] = 'o';
+    noname[2] = 'n';
+    noname[3] = 'a';
+    noname[5] = 'm';
+    noname[6] = 'e';
+    noname[7] = '\0';
+    this->setName(noname);
+    this->setNumber(noname);
     this->setAge(0);
     this->setProductCount(0);
 }
 
-string Animal::getNumber() const
+char *Animal::getNumber() const
 {
     return this->number;
 }
 
-string Animal::getName() const
+char *Animal::getName() const
 {
     return this->name;
 }
@@ -81,18 +115,18 @@ void Animal::setSpeedProduction(int speed)
     this->speedProduction = speed;
 }
 
-void Animal::setNumber(string _number)
+void Animal::setNumber(char *_number)
 {
-    if (_number.empty())
+    if (_number == NULL)
     {
         throw invalid_argument("number is empty");
     }
     this->number = _number;
 }
 
-void Animal::setName(string _name)
+void Animal::setName(char *_name)
 {
-    if (_name.empty())
+    if (_name == NULL)
     {
         throw invalid_argument("name is empty");
     }

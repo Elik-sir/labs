@@ -23,7 +23,7 @@ public:
     Animal **getAnimals();
     int getCountAnimals();
     void paintAll();
-    void removeAnimal(string number);
+    void removeAnimal(const char *number);
     void showAllAnimals();
     int getSumPenguinProducts();
     int getSumOstrichProducts();
@@ -40,7 +40,8 @@ public:
     void collectPenguinProducts();
     void printProductionInfo();
     void clearProducts();
-    bool hasAnimal(string number);
+    char *getStr(const char *str);
+    bool hasAnimal(char *number);
     ~Farm();
 };
 

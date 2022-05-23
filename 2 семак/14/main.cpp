@@ -3,6 +3,7 @@
 #include "Penguin.h"
 #include "Farm.h"
 #include "FarmLoop.h"
+
 /*
 Номер - уникален для каждого животного, каждый номер существует в единственном экземляре на территории всей фермы
 ДОП:
@@ -18,17 +19,20 @@ int main()
 {
     Penguin p("num1", "p1", 2);
     Farm f;
+
     Penguin *a = new Penguin("num1", "p1", 2);
     Penguin *b = new Penguin("num1123", "p1", 2);
-    Goose *c = new Goose("goose", "ewewe1", 2);
+    Goose *c = new Goose("goose", "ne_goose", 2);
     Ostrich *d = new Ostrich("num11234", "ewewe1", 2, 30, 20);
+    //  d->getInfo();
     f.addAnimal(a);
     f.addAnimal(b);
     f.addAnimal(c);
     f.addAnimal(d);
-    // f.showAllAnimals();
-    f.removeAnimal("num1123");
-    // f.showAllAnimals();
+    f.showAllAnimals();
+    //  f.showAllAnimals();
+    // f.removeAnimal("num1123");
+    //  f.showAllAnimals();
     FarmLoop loop(&f);
     loop.run();
     return 0;
