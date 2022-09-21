@@ -20,7 +20,7 @@ public:
     void setWingsColor(int color);
     void paint();
     char *getType();
-    static string getTypeAnimal();
+    static char *getTypeAnimal();
     Ostrich &operator=(const Ostrich &ostrich);
     void getInfo();
 };

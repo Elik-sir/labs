@@ -42,6 +42,12 @@ public:
     bool operator<=(const IntSet &set);
     ~IntSet();
 };
+class Vec
+{
+public:
+    int a;
+};
 std::ostream &operator<<(ostream &os, const IntSet &p);
 std::istream &operator>>(istream &os, IntSet &p);
+std::istream &operator>>(istream &os, Vec &a);
 Position *decardProduct(const IntSet &a, const IntSet &b);

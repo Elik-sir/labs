@@ -30,7 +30,7 @@ char *Penguin::getType()
 {
     return Penguin::type;
 }
-string Penguin::getTypeAnimal()
+char *Penguin::getTypeAnimal()
 {
     return Penguin::type;
 }

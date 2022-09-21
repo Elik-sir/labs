@@ -29,7 +29,7 @@ char *Ostrich::getType()
 {
     return Ostrich::type;
 }
-string Ostrich::getTypeAnimal()
+char *Ostrich::getTypeAnimal()
 {
     return Ostrich::type;
 }

@@ -19,6 +19,6 @@ public:
     void getInfo();
 
     char *getType();
-    static string getTypeAnimal();
+    static char *getTypeAnimal();
 };
 #endif

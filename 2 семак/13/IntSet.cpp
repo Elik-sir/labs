@@ -256,6 +256,14 @@ std::istream &operator>>(istream &in, IntSet &p)
     p += num;
     return in;
 }
+
+std::istream &operator>>(istream &in, int &a)
+{
+    int num;
+    in >> num;
+    a = num * num * num;
+    return in;
+}
 // IntSet IntSet::operator*(IntSet set)
 // {
 //     IntSet resultSet;

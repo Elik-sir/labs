@@ -49,7 +49,12 @@
         "typeinfo": "cpp",
         "fstream": "cpp",
         "ctime": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "cstring": "cpp",
+        "ratio": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
