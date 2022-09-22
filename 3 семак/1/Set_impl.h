@@ -26,7 +26,6 @@ void Set<T>::insert(const T &value)
 {
     if (this->__size < this->capacity)
     {
-
         __data[this->__size] = value;
         this->__size++;
     }
@@ -75,6 +74,19 @@ T *Set<T>::getData() const
 
     return this->__data;
 }
+
+template <class T>
+Set<T> Set<T>::setUnion(const Set<T> &s)
+{
+    Set<T> newSet(s);
+
+    for (int i = 0; i < this->size(); i++)
+    {
+        newSet.insert(this->__data[i]);
+    }
+    return newSet;
+}
+
 template <class T>
 std::ostream &operator<<(ostream &os, const Set<T> &p)
 {

@@ -7,23 +7,10 @@ int main()
     a.insert(5);
     a.insert(6);
     a.insert(7);
-    cout << a;
-    Set<char> q;
-    q.insert('a');
-    q.insert('b');
-    Set<char> qwe(q);
-    qwe.insert('3');
-    qwe = q;
-    q.insert('1');
-    cout << qwe << endl;
-    cout << q;
-    if (q.find('3'))
-    {
-        cout << "finded" << endl;
-    }
-    else
-    {
-        cout << "aaaaaaaaaaaaaaaaaa" << endl;
-    }
+    cout << a << endl;
+    Set<int> b;
+    b.insert(1);
+    b.insert(123);
+    cout << a.setUnion(b) << endl;
     return 0;
 }

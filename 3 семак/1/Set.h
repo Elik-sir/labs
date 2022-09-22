@@ -17,6 +17,7 @@ public:
     bool find(const T &value) const;
     void insert(const T &value);
     void operator=(const Set<T> &set);
+    Set<T> setUnion(const Set<T> &s);
     T *getData() const;
 };
 
