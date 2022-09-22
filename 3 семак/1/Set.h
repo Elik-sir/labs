@@ -19,6 +19,7 @@ public:
     void operator=(const Set<T> &set);
     Set<T> setUnion(const Set<T> &s);
     T *getData() const;
+    ~Set();
 };
 
 template <class T>

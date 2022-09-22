@@ -24,17 +24,35 @@ Set<T>::Set()
 template <class T>
 void Set<T>::insert(const T &value)
 {
+    if (find(value))
+    {
+        return;
+    }
+    int i;
+    for (i = 0; i < this->__size && value > __data[i]; i++)
+    {
+    }
+
     if (this->__size < this->capacity)
     {
-        __data[this->__size] = value;
         this->__size++;
+        for (int j = this->__size; j > i; j--)
+        {
+            __data[j] = __data[j - 1];
+        }
+        __data[i] = value;
     }
     else
     {
         this->capacity *= 2;
-        __data = (T *)realloc(__data, sizeof(T) * capacity);
-        __data[this->__size] = value;
         this->__size++;
+        __data = (T *)realloc(__data, sizeof(T) * capacity);
+
+        for (int j = this->__size; j > i; j--)
+        {
+            __data[j] = __data[j - 1];
+        }
+        __data[i] = value;
     }
 }
 
@@ -79,7 +97,10 @@ template <class T>
 Set<T> Set<T>::setUnion(const Set<T> &s)
 {
     Set<T> newSet(s);
-
+    if (s.size() == 0 || this->size() == 0)
+    {
+        throw invalid_argument("You cant not union with void set");
+    }
     for (int i = 0; i < this->size(); i++)
     {
         newSet.insert(this->__data[i]);
@@ -96,4 +117,10 @@ std::ostream &operator<<(ostream &os, const Set<T> &p)
     }
 
     return os;
+}
+
+template <class T>
+Set<T>::~Set()
+{
+    delete[] __data;
 }
