@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Set_impl.h"
+#include "Point.h"
 using namespace std;
+
 int main()
 {
     try
@@ -17,7 +19,15 @@ int main()
         b.insert(123);
         b.insert(-333);
         Set<int> c;
-        cout << b.setUnion(c) << endl;
+        Set<Point> qw;
+        qw.insert({x : 41, y : 4, z : 4});
+        qw.insert({x : 1, y : 1, z : 1});
+        qw.insert({x : 1, y : 1, z : 1});
+        qw.insert({x : 2, y : 1, z : 3});
+        qw.insert({x : 1002, y : 2, z : 2});
+        qw.insert({x : 1002, y : 3, z : 2});
+        cout << qw;
+        // cout << b.setUnion(c) << endl;
     }
     catch (invalid_argument &e)
     {

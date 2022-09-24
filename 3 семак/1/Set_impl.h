@@ -75,7 +75,7 @@ int Set<T>::size() const
 }
 
 template <class T>
-bool Set<T>::find(const T &value) const
+bool Set<T>::find(const T &value)
 {
     for (int i = 0; i < this->size(); i++)
     {
