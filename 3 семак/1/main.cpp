@@ -18,16 +18,29 @@ int main()
         b.insert(1);
         b.insert(123);
         b.insert(-333);
-        Set<int> c;
-        Set<Point> qw;
-        qw.insert({x : 41, y : 4, z : 4});
-        qw.insert({x : 1, y : 1, z : 1});
-        qw.insert({x : 1, y : 1, z : 1});
-        qw.insert({x : 2, y : 1, z : 3});
-        qw.insert({x : 1002, y : 2, z : 2});
-        qw.insert({x : 1002, y : 3, z : 2});
-        cout << qw;
-        // cout << b.setUnion(c) << endl;
+        cout << b.setUnion(a) << '\n';
+
+        Set<Point> p1;
+
+        p1.insert({x : 41, y : 4, z : 4});
+        p1.insert({x : 1, y : 1, z : 1});
+        p1.insert({x : 1, y : 1, z : 1});
+        p1.insert({x : 2, y : 1, z : 3});
+        p1.insert({x : 12, y : 2, z : 2});
+        p1.insert({x : 4, y : 3, z : 2});
+        p1.insert({x : 1004, y : 3, z : 2});
+        p1.insert({x : 1003, y : 3, z : 2});
+
+        cout << "p1: \n"
+             << p1 << '\n';
+        Set<Point> p2;
+        p2.insert({x : 41, y : 4, z : 4});
+        p2.insert({x : 1, y : 1, z : 1});
+        p2.insert({x : 1, y : 1, z : 1});
+        p2.insert({x : 3, y : 3, z : 3});
+        cout << p1.setUnion(p2) << '\n';
+        // Set<int> c;
+        //  cout << b.setUnion(c) << endl;
     }
     catch (invalid_argument &e)
     {

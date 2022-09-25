@@ -16,7 +16,7 @@ struct Point
         return (x * x + y * y + z * z) > (point.x * point.x + point.y * point.y + point.z * point.z);
     }
 };
-std::ostream &operator<<(ostream &os, Point p)
+std::ostream &operator<<(ostream &os, const Point &p)
 {
     os << "(" << p.x << "," << p.y << "," << p.z << ")" << endl;
     return os;

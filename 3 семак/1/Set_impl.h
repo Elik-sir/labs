@@ -44,14 +44,26 @@ void Set<T>::insert(const T &value)
     }
     else
     {
-        this->capacity *= 2;
-        this->__size++;
-        __data = (T *)realloc(__data, sizeof(T) * capacity);
 
-        for (int j = this->__size; j > i; j--)
+        this->capacity = capacity * 2;
+        cout << "size: " << size() << "capacity  " << capacity << "  val: " << value;
+        T *tmp = new T[capacity];
+
+        for (int j = 0; j < this->__size; j++)
         {
+            tmp[j] = __data[j];
+        }
+
+        for (int j = size(); j > i; j--)
+        {
+            if (j == 0)
+            {
+                break;
+            }
             __data[j] = __data[j - 1];
         }
+
+        this->__size++;
         __data[i] = value;
     }
 }
@@ -103,6 +115,7 @@ Set<T> Set<T>::setUnion(const Set<T> &s)
     }
     for (int i = 0; i < this->size(); i++)
     {
+
         newSet.insert(this->__data[i]);
     }
     return newSet;
