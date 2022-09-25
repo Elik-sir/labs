@@ -10,17 +10,18 @@ class Set
 private:
     int __size;
     int capacity;
-    T *__data;
+    T **__data;
 
 public:
     Set();
     Set(const Set<T> &set);
+
     int size() const;
     bool find(const T &value);
     void insert(const T &value);
     void operator=(const Set<T> &set);
     Set<T> setUnion(const Set<T> &s);
-    T *getData() const;
+    T **getData() const;
     ~Set();
 };
 
