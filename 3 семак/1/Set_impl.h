@@ -46,8 +46,7 @@ void Set<T>::insert(const T &value)
     {
 
         this->capacity = capacity * 2;
-        cout << "size: " << size() << "capacity  " << capacity << "  val: " << value;
-        T *tmp = new T[capacity];
+        T tmp[capacity];
 
         for (int j = 0; j < this->__size; j++)
         {
@@ -60,11 +59,15 @@ void Set<T>::insert(const T &value)
             {
                 break;
             }
-            __data[j] = __data[j - 1];
+            tmp[j] = tmp[j - 1];
         }
 
         this->__size++;
-        __data[i] = value;
+        tmp[i] = value;
+        for (int j = 0; j < this->__size; j++)
+        {
+            __data[j] = tmp[j];
+        }
     }
 }
 
