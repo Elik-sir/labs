@@ -18,32 +18,23 @@ int main()
         b.insert(1);
         b.insert(123);
         b.insert(-333);
-        cout << b.setUnion(a) << '\n';
-
+        Set<int> c;
         Set<Point> p1;
-
+        cout << "p1:\n";
         p1.insert({x : 41, y : 4, z : 4});
         p1.insert({x : 1, y : 1, z : 1});
         p1.insert({x : 1, y : 1, z : 1});
         p1.insert({x : 2, y : 1, z : 3});
-        p1.insert({x : 12, y : 2, z : 2});
-        p1.insert({x : 4, y : 3, z : 2});
-        p1.insert({x : 1004, y : 3, z : 2});
-        p1.insert({x : 1003, y : 3, z : 2});
-
-        cout << "p1: \n"
-             << p1 << '\n';
+        p1.insert({x : 1002, y : 2, z : 2});
+        p1.insert({x : 1002, y : 3, z : 2});
         Set<Point> p2;
-        p2.insert({x : 41, y : 4, z : 4});
-
-        p2.insert({x : 1, y : 1, z : 1});
-        p2.insert({x : 1, y : 1, z : 1});
-        p2.insert({x : 3, y : 3, z : 3});
-        cout << "p2: \n"
-             << p2 << '\n';
-        cout << p1.setUnion(p2) << '\n';
-        // Set<int> c;
-        //  cout << b.setUnion(c) << endl;
+        cout << p1 << "p2:\n";
+        p2.insert({x : 3, y : 1, z : 3});
+        p2.insert({x : 1004, y : 2, z : 2});
+        p2.insert({x : 1002, y : 3, z : 2});
+        cout << p2 << "\nunion p2 and p1: \n";
+        cout << p1.setUnion(p2);
+        // cout << b.setUnion(c) << endl;
     }
     catch (invalid_argument &e)
     {
