@@ -44,11 +44,8 @@ void Set<T>::insert(const T &value)
     }
     else
     {
-
         capacity = capacity * 2;
-
         T **tmp = new T *[capacity];
-
         for (size_t k = 0; k < this->__size; k++)
         {
             tmp[k] = new T(*this->__data[k]);
