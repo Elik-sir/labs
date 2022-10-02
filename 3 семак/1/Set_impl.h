@@ -1,9 +1,10 @@
 #include "Set.h"
+#include <fstream>
+
 using namespace std;
 template <class T>
 Set<T>::Set(const Set<T> &set)
 {
-
     this->__size = set.__size;
     this->capacity = set.capacity;
     this->__data = new T *[set.capacity];
@@ -20,7 +21,45 @@ Set<T>::Set()
     this->__size = 0;
     this->capacity = 1;
 }
+template <class T>
+void Set<T>::readFromFile(string pathfile)
+{
+    ifstream fileIn;
+    fileIn.open(pathfile);
+    if (fileIn.is_open())
+    {
+        string line;
+        string number;
+        while (getline(fileIn, line))
+        {
+            for (const char digit : line)
+            {
+                if (digit == '-' && number != "")
+                {
+                    throw invalid_argument("irregular format");
+                }
+                if (digit >= '0' && digit <= '9' || digit == '-')
+                {
 
+                    number += digit;
+                }
+                else
+                {
+                    this->insert(stoi(number));
+                    number = "";
+                }
+            }
+
+            this->insert(stoi(number));
+            number = "";
+        }
+    }
+    else
+    {
+        std::cout << "Error";
+    }
+    fileIn.close();
+}
 template <class T>
 void Set<T>::insert(const T &value)
 {

@@ -15,7 +15,7 @@ private:
 public:
     Set();
     Set(const Set<T> &set);
-
+    void readFromFile(string pathFile);
     int size() const;
     bool find(const T &value);
     void insert(const T &value);
